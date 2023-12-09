@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alarm</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+</head>
+<body>
+    <div id="clockContainer">
+        <div id="hour"></div>
+        <div id="minute"></div>
+        <div id="second"></div>
+    </div>
+    <div class="setAlarm">
+      <div class="alarm">
+        <div class="setAlarm-left">
+          <!-- input tags for setting the time -->
+          <input type="number" min="0" max="23" required placeholder="hrs" id="setAlarm-hour">
+          <input type="number" min="0" max="59" required placeholder="min" id="setAlarm-min">
+          <input type="number" min="0" max="59" required placeholder="sec" id="setAlarm-sec">
+          <!-- select tags for setting the Alarm -->
+          <select id="setAlarm-ampm" >
+            <option value="AM/PM" selected hidden>AM/PM</option>
+            <option value="AM">AM</option>
+            <option value="PM">PM</option>
+          </select>
+  
+        </div>
+        <!-- buttons for setting the alarm -->
+        <div class="setAlarm-right">
+          <button onclick="setAlarm()">Set Alarm</button>
+        </div>
+      </div>
+      <div class="setAlarm-delete">
+        <!-- heading for te list items -->
+        <div class="setAlarm-delete-left">
+          <h3 class="alarm-heading">ALARMS</h3>
+        </div>
+  
+        <div id="setAlarm-list">
+          <!-- alarm will be displayed here which is taken care in the js file  -->
+        </div>
+    </div>
+        
+        
+  
+    </div>
+     
+
+
+  
+
+    <script>
+        setInterval(() => {
+            d = new Date(); //object of date()
+            hr = d.getHours();
+            min = d.getMinutes();
+            sec = d.getSeconds();
+            hr_rotation = 30 * hr + min / 2; //converting current time
+            min_rotation = 6 * min;
+            sec_rotation = 6 * sec;
+    
+            hour.style.transform = `rotate(${hr_rotation}deg)`;
+            minute.style.transform = `rotate(${min_rotation}deg)`;
+            second.style.transform = `rotate(${sec_rotation}deg)`;
+        }, 1000);
+    </script>
+</body>
+</html>
